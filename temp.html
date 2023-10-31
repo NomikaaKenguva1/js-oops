@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature Converter</title>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <p>Celsius Temperature: <span id="celsiusDisplay">0</span>&deg;C</p>
+    <p>Fahrenheit Temperature: <span id="fahrenheitDisplay">32</span>&deg;F</p>
+    <p>Kelvin Temperature: <span id="kelvinDisplay">273.15</span>K</p>
+
+    <label for="celsiusInput">Set Celsius Temperature:</label>
+    <input type="number" id="celsiusInput">
+    <button onclick="setCelsius()">Set</button>
+
+    <button onclick="convertToFahrenheit()">Convert to Fahrenheit</button>
+    <button onclick="convertToKelvin()">Convert to Kelvin</button>
+
+    <script>
+        class TemperatureConverter {
+            constructor() {
+                this._celsius = 0;
+            }
+
+            setCelsius(value) {
+                if (typeof value === 'number') {
+                    this._celsius = value;
+                    updateDisplay();
+                } else {
+                    alert('Please provide a valid numerical value for Celsius.');
+                }
+            }
+
+            getCelsius() {
+                return this._celsius;
+            }
+
+            convertToFahrenheit() {
+                return (this._celsius * 9/5) + 32;
+            }
+
+            convertToKelvin() {
+                return this._celsius + 273.15;
+            }
+        }
+
+        const converter = new TemperatureConverter();
+
+        function updateDisplay() {
+            document.getElementById('celsiusDisplay').textContent = converter.getCelsius();
+            document.getElementById('fahrenheitDisplay').textContent = converter.convertToFahrenheit();
+            document.getElementById('kelvinDisplay').textContent = converter.convertToKelvin();
+        }
+
+        function setCelsius() {
+            const celsiusInput = parseFloat(document.getElementById('celsiusInput').value);
+            converter.setCelsius(celsiusInput);
+        }
+
+        function convertToFahrenheit() {
+            document.getElementById('fahrenheitDisplay').textContent = converter.convertToFahrenheit();
+        }
+
+        function convertToKelvin() {
+            document.getElementById('kelvinDisplay').textContent = converter.convertToKelvin();
+        }
+
+        updateDisplay();
+    </script>
+</body>
+</html>

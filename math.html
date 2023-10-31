@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Operations</title>
+</head>
+<body>
+    <h1>Math Operations</h1>
+
+    <p>Square of 5: <span id="squareResult"></span></p>
+    <p>Cube of 4: <span id="cubeResult"></span></p>
+
+    <script>
+        class MathOperations {
+            static square(number) {
+                return number * number;
+            }
+        }
+
+        class AdvancedMathOperations extends MathOperations {
+            static cube(number) {
+                return number * number * number;
+            }
+        }
+
+        // Example usage
+        const numberToSquare = 5;
+        const numberToCube = 4;
+
+        const squareResult = MathOperations.square(numberToSquare);
+        const cubeResult = AdvancedMathOperations.cube(numberToCube);
+
+        document.getElementById('squareResult').textContent = squareResult;
+        document.getElementById('cubeResult').textContent = cubeResult;
+    </script>
+</body>
+</html>

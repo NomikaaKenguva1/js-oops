@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shapes</title>
+</head>
+<body>
+    <h1>Shapes</h1>
+
+    <p>Circle Area: <span id="circleAreaResult"></span></p>
+    <p>Square Area: <span id="squareAreaResult"></span></p>
+
+    <script>
+        class Shape {
+            constructor() {
+                this.type = "Generic Shape";
+            }
+
+            calculateArea() {
+                return "Area calculation not implemented for " + this.type;
+            }
+
+            calculatePerimeter() {
+                return "Perimeter calculation not implemented for " + this.type;
+            }
+        }
+
+        class Circle extends Shape {
+            constructor(radius) {
+                super();
+                this.type = "Circle";
+                this.radius = radius;
+            }
+
+            calculateArea() {
+                return Math.PI * this.radius ** 2;
+            }
+
+            calculatePerimeter() {
+                return 2 * Math.PI * this.radius;
+            }
+        }
+
+        class Square extends Shape {
+            constructor(sideLength) {
+                super();
+                this.type = "Square";
+                this.sideLength = sideLength;
+            }
+
+            calculateArea() {
+                return this.sideLength ** 2;
+            }
+
+            calculatePerimeter() {
+                return 4 * this.sideLength;
+            }
+        }
+
+        // Example usage
+        const circle = new Circle(5);
+        const square = new Square(4);
+
+        document.getElementById('circleAreaResult').textContent = circle.calculateArea();
+        document.getElementById('squareAreaResult').textContent = square.calculateArea();
+    </script>
+</body>
+</html>
